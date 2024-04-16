@@ -32,26 +32,45 @@ public class VolleySpreadCannon extends Weapon
 	//modified this
 	@Override
 	public int turnAttack(PriorityQueue<Titan> laneTitans){
-		if (laneTitans.isEmpty())
+		if(laneTitans.isEmpty()){
 			return 0;
-		int resourcesum = 0;
-		PriorityQueue<Titan> temp = new PriorityQueue<>();
-		while (!laneTitans.isEmpty()) {
-			Titan x = laneTitans.remove();
-			if (x.getDistance() >= minRange && x.getDistance() <= maxRange) {
-				int y = attack(x);
-				resourcesum += y;
-				if (y == 0) {
-					temp.add(x);
+		}
+		int totalResources=0;
+		PriorityQueue<Titan> temp=new PriorityQueue<>();
+		while(!laneTitans.isEmpty()){
+			Titan t=laneTitans.poll();
+			if(t.getDistance()<=this.maxRange && t.getDistance()>=this.minRange){
+				int resources=attack(t);
+				totalResources+=resources;
+				if(resources==0){
+					temp.add(t);
 				}
-			} else {
-				temp.add(x);
+			}
+			else{
+				temp.add(t);
 			}
 		}
 		laneTitans.addAll(temp);
-		return resourcesum;
+		return totalResources;
 	}
 
 
 }
-//
+//if (laneTitans.isEmpty())
+//		return 0;
+//		int resourcesum = 0;
+//		PriorityQueue<Titan> temp = new PriorityQueue<>();
+//		while (!laneTitans.isEmpty()) {
+//		Titan x = laneTitans.remove();
+//		if (x.getDistance() >= minRange && x.getDistance() <= maxRange) {
+//		int y = attack(x);
+//		resourcesum += y;
+//		if (y == 0) {
+//		temp.add(x);
+//		}
+//		} else {
+//		temp.add(x);
+//		}
+//		}
+//		laneTitans.addAll(temp);
+//		return resourcesum;
