@@ -1,6 +1,7 @@
 package game.engine.interfaces;
 
-public interface Attackee 
+public interface Attackee
+
 {
 	int getCurrentHealth();
 	void setCurrentHealth(int health);
@@ -20,4 +21,4 @@ public interface Attackee
 
 	}
 }
-//
+//jana was here
