@@ -31,10 +31,9 @@ public class Wall implements Attackee
 	}
 
 	@Override
-	public int getResourcesValue() // implies that a wall was damaged and not the enemy (titan)
+	public int getResourcesValue()
 	{
 		return -1;
 	}
 
 }
-//

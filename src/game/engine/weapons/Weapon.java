@@ -28,4 +28,3 @@ public abstract class Weapon implements Attacker
 		return "Weapon" + " baseDamage =" + baseDamage ;
 	}
 }
-//

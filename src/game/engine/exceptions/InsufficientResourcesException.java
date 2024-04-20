@@ -29,4 +29,3 @@ public class InsufficientResourcesException extends GameActionException
 	}
 
 }
-//

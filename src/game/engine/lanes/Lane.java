@@ -63,90 +63,56 @@ public class Lane implements Comparable<Lane>
 		weapons.add(weapon);
 	}
 
-	public void moveLaneTitans(){ //remove each titan, move them, then put them back again. (not in the same loop, so you don't take the same titan over and over.)
-		PriorityQueue<Titan> temp=new PriorityQueue<>();
-		while(!titans.isEmpty()) {
-			Titan t = this.titans.poll();
-			t.move();
-			temp.add(t);
+	public void moveLaneTitans()
+	{
+		if (titans.isEmpty())
+			return;
+		PriorityQueue<Titan> temp = new PriorityQueue<>();
+		while(!this.titans.isEmpty())
+		{
+			Titan x = this.titans.remove();
+			x.move();
+			temp.add(x);
 		}
 		titans.addAll(temp);
 	}
 
-	public int performLaneTitansAttacks(){ //makes all titans attack once if they reached the wall
+	public int performLaneTitansAttacks()
+	{
+		if (titans.isEmpty() || this.isLaneLost()) return 0;
 		int resourceSum = 0;
 		PriorityQueue<Titan> temp = new PriorityQueue<>();
-		while(!this.titans.isEmpty()){
-			Titan x = this.titans.remove();
-			if(x.hasReachedTarget()){
-				int j = x.attack(this.laneWall);
-				resourceSum+=j;
-			}
+		while(!this.titans.isEmpty())
+		{
+			Titan x = this.titans.poll();
+			if(x.hasReachedTarget()) resourceSum+=x.attack(this.laneWall);
 			temp.add(x);
 		}
-		while(!temp.isEmpty()){
-			this.titans.add(temp.remove());
-		}
+		titans.addAll(temp);
 		return resourceSum;
 	}
-
-    //adjusted this
-	public int performLaneWeaponsAttacks() {
+	public int performLaneWeaponsAttacks()
+	{
 		int totalResources = 0;
-		for (Weapon weapon : weapons) {
+		for (Weapon weapon : weapons)
+		{
 			totalResources += weapon.turnAttack(titans);
 		}
 		return totalResources;
 	}
-
-
-
-	public boolean isLaneLost(){
-		return this.laneWall.getCurrentHealth()<=0;
-	}
-
-	public void updateLaneDangerLevel(){
-		int dangerSum= 0;
+	public boolean isLaneLost() {return this.laneWall.isDefeated();}
+	public void updateLaneDangerLevel()
+	{
+		int dangerSum=0;
 		PriorityQueue<Titan> temp = new PriorityQueue<>();
-		while(!titans.isEmpty()){
+		while(!titans.isEmpty())
+		{
 			Titan x = titans.remove();
 			dangerSum+=x.getDangerLevel();
 			temp.add(x);
 		}
-		while(!temp.isEmpty()){
-			titans.add(temp.remove());
-		}
+		titans.addAll(temp);
 		this.dangerLevel=dangerSum;
 	}
 
-	public static void main(String[] args) {
-		Titan t1 = new AbnormalTitan(2,100,20,60,15,15,2);
-		Titan t2 = new PureTitan(1,100,15,30,10,10,1);
-		Titan t3 = new ColossalTitan(4,1000,100,15,5,60,4);
-		Titan t4 = new ArmoredTitan(3,200,85,10,10,30,3);
-		Titan t5 = new ArmoredTitan(3,200,85,9,10,30,3);
-		Titan t6 = new ArmoredTitan(3,200,85,5,10,30,3);
-		Titan t7 = new ArmoredTitan(3,200,85,1,10,30,3);
-		Wall w = new Wall(10000);
-		Lane l = new Lane(w);
-		l.titans.add(t2);
-		l.titans.add(t1);
-		l.titans.add(t3);
-		l.titans.add(t4);
-		l.titans.add(t5);
-		l.titans.add(t6);
-		l.titans.add(t7);
-		System.out.println(l.titans);
-
-	}
-
 }
-//	PriorityQueue<Titan> temp = new PriorityQueue<>();
-//		while(!this.titans.isEmpty()) {
-//				Titan x = this.titans.remove();
-//				x.move();
-//				temp.add(x);
-//				}
-//				while(!temp.isEmpty()){
-//				this.titans.add(temp.remove());
-//				}

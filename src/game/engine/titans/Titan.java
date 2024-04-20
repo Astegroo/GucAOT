@@ -98,10 +98,9 @@ public abstract class Titan implements Attacker, Attackee, Mobil, Comparable<Tit
 	}
 
 	@Override
-	public int compareTo(Titan o) // prioritizing the nearest titans according to the wall
+	public int compareTo(Titan o)
 	{
 		return this.distanceFromBase - o.distanceFromBase;
 	}
 
 }
-//
