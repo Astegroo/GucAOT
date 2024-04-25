@@ -65,19 +65,20 @@ public class TitanRegistry // For storing the titan's information from the csv f
 	}
 
 	public Titan spawnTitan(int distanceFromBase) {
-		if (this.code == 1){
-            return new PureTitan(baseHealth,baseDamage,heightInMeters,distanceFromBase,speed,resourcesValue,dangerLevel);
-		}
-		else if (this.code == 2){
-            return new AbnormalTitan(baseHealth,baseDamage,heightInMeters,distanceFromBase,speed,resourcesValue,dangerLevel);
-		}
-		else if (this.code == 3){
-            return new ArmoredTitan(baseHealth,baseDamage,heightInMeters,distanceFromBase,speed,resourcesValue,dangerLevel);
-		}
-		else{
-            return new ColossalTitan(baseHealth,baseDamage,heightInMeters,distanceFromBase,speed,resourcesValue,dangerLevel);
+		switch (this.code) {
+			case 1:
+				return new PureTitan(baseHealth, baseDamage, heightInMeters, distanceFromBase, speed, resourcesValue, dangerLevel);
+			case 2:
+				return new AbnormalTitan(baseHealth, baseDamage, heightInMeters, distanceFromBase, speed, resourcesValue, dangerLevel);
+			case 3:
+				return new ArmoredTitan(baseHealth, baseDamage, heightInMeters, distanceFromBase, speed, resourcesValue, dangerLevel);
+			case 4:
+				return new ColossalTitan(baseHealth, baseDamage, heightInMeters, distanceFromBase, speed, resourcesValue, dangerLevel);
+			default:
+				return null;
 		}
 	}
+
 
 	public static void main(String[] args) throws IOException {
 		HashMap<Integer, TitanRegistry> r = DataLoader.readTitanRegistry();

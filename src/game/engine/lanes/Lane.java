@@ -64,15 +64,13 @@ public class Lane implements Comparable<Lane>
 	}
 
 	public void moveLaneTitans(){ //remove each titan, move them, then put them back again. (not in the same loop, so you don't take the same titan over and over.)
-		PriorityQueue<Titan> temp = new PriorityQueue<>();
-		while(!this.titans.isEmpty()) {
-			Titan x = this.titans.remove();
-			x.move();
-			temp.add(x);
+		PriorityQueue<Titan> temp=new PriorityQueue<>();
+		while(!titans.isEmpty()) {
+			Titan t = this.titans.poll();
+			t.move();
+			temp.add(t);
 		}
-		while(!temp.isEmpty()){
-			this.titans.add(temp.remove());
-		}
+		titans.addAll(temp);
 	}
 
 	public int performLaneTitansAttacks(){ //makes all titans attack once if they reached the wall
@@ -92,17 +90,19 @@ public class Lane implements Comparable<Lane>
 		return resourceSum;
 	}
 
-	public int performLaneWeaponsAttacks(){
-		int resourcesSum = 0;
-		for(Weapon x: weapons) {
-			int y = x.turnAttack(this.titans);
-			resourcesSum+=y;
+    //adjusted this
+	public int performLaneWeaponsAttacks() {
+		int totalResources = 0;
+		for (Weapon weapon : weapons) {
+			totalResources += weapon.turnAttack(titans);
 		}
-		return resourcesSum;
+		return totalResources;
 	}
 
+
+
 	public boolean isLaneLost(){
-		return laneWall.getCurrentHealth()<=0;
+		return this.laneWall.getCurrentHealth()<=0;
 	}
 
 	public void updateLaneDangerLevel(){
@@ -141,4 +141,12 @@ public class Lane implements Comparable<Lane>
 	}
 
 }
-//
+//	PriorityQueue<Titan> temp = new PriorityQueue<>();
+//		while(!this.titans.isEmpty()) {
+//				Titan x = this.titans.remove();
+//				x.move();
+//				temp.add(x);
+//				}
+//				while(!temp.isEmpty()){
+//				this.titans.add(temp.remove());
+//				}

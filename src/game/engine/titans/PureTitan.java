@@ -9,6 +9,8 @@ public class PureTitan extends Titan
 	{
 		super(baseHealth, baseDamage, heightInMeters, distanceFromBase, speed, resourcesValue, dangerLevel);
 	}
-
+	@Override
+	public boolean hasReachedTarget() {
+		return this.getDistance() <= 0;
+	}
 }
-//
