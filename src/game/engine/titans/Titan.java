@@ -43,7 +43,7 @@ public abstract class Titan implements Attacker, Attackee, Mobil, Comparable<Tit
 	@Override
 	public void setCurrentHealth(int health)
 	{
-		this.currentHealth = health < 0 ? 0 : health;
+		this.currentHealth = Math.max(health, 0);
 	}
 
 	@Override
@@ -66,7 +66,7 @@ public abstract class Titan implements Attacker, Attackee, Mobil, Comparable<Tit
 	@Override
 	public void setDistance(int distance)
 	{
-		this.distanceFromBase = distance < 0 ? 0 : distance;
+		this.distanceFromBase = Math.max(distance, 0);
 	}
 
 	@Override
@@ -91,17 +91,10 @@ public abstract class Titan implements Attacker, Attackee, Mobil, Comparable<Tit
 	{
 		return this.dangerLevel;
 	}
-
 	@Override
-	public String toString() {
-		return  " distanceFromBase=" + distanceFromBase + ": dangerLevel=" + dangerLevel ;
-	}
-
-	@Override
-	public int compareTo(Titan o) // prioritizing the nearest titans according to the wall
+	public int compareTo(Titan o)
 	{
 		return this.distanceFromBase - o.distanceFromBase;
 	}
 
 }
-//

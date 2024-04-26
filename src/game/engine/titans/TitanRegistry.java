@@ -5,14 +5,14 @@ import game.engine.dataloader.DataLoader;
 import java.io.IOException;
 import java.util.HashMap;
 
-public class TitanRegistry // For storing the titan's information from the csv file read in the data loader
+public class TitanRegistry
 {
 	private final int code;
 	private int baseHealth;
 	private int baseDamage;
 	private int heightInMeters;
-	private int speed; // distance moved per turn
-	private int resourcesValue; // resources gained by defeating it
+	private int speed;
+	private int resourcesValue;
 	private int dangerLevel;
 
 
@@ -43,47 +43,34 @@ public class TitanRegistry // For storing the titan's information from the csv f
 	{
 		return baseDamage;
 	}
-
 	public int getHeightInMeters()
 	{
 		return heightInMeters;
 	}
-
 	public int getSpeed()
 	{
 		return speed;
 	}
-
 	public int getResourcesValue()
 	{
 		return resourcesValue;
 	}
-
 	public int getDangerLevel()
 	{
 		return dangerLevel;
 	}
-
-	public Titan spawnTitan(int distanceFromBase) {
-		switch (this.code) {
-			case 1:
-				return new PureTitan(baseHealth, baseDamage, heightInMeters, distanceFromBase, speed, resourcesValue, dangerLevel);
-			case 2:
-				return new AbnormalTitan(baseHealth, baseDamage, heightInMeters, distanceFromBase, speed, resourcesValue, dangerLevel);
-			case 3:
-				return new ArmoredTitan(baseHealth, baseDamage, heightInMeters, distanceFromBase, speed, resourcesValue, dangerLevel);
-			case 4:
-				return new ColossalTitan(baseHealth, baseDamage, heightInMeters, distanceFromBase, speed, resourcesValue, dangerLevel);
-			default:
-				return null;
-		}
-	}
-
-
-	public static void main(String[] args) throws IOException {
-		HashMap<Integer, TitanRegistry> r = DataLoader.readTitanRegistry();
-		TitanRegistry k = r.get(4);
-		Titan x = k.spawnTitan(100);
-		System.out.print(x.getBaseHealth());
+	public Titan spawnTitan(int distanceFromBase)
+	{
+        return switch (this.code) {
+            case 1 ->
+                    new PureTitan(baseHealth, baseDamage, heightInMeters, distanceFromBase, speed, resourcesValue, dangerLevel);
+            case 2 ->
+                    new AbnormalTitan(baseHealth, baseDamage, heightInMeters, distanceFromBase, speed, resourcesValue, dangerLevel);
+            case 3 ->
+                    new ArmoredTitan(baseHealth, baseDamage, heightInMeters, distanceFromBase, speed, resourcesValue, dangerLevel);
+            case 4 ->
+                    new ColossalTitan(baseHealth, baseDamage, heightInMeters, distanceFromBase, speed, resourcesValue, dangerLevel);
+            default -> null;
+        };
 	}
 }

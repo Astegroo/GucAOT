@@ -1,10 +1,4 @@
 package game.engine.weapons;
-
-import game.engine.titans.AbnormalTitan;
-import game.engine.titans.ArmoredTitan;
-import game.engine.titans.ColossalTitan;
-import game.engine.titans.PureTitan;
-
 public class WeaponRegistry
 {
 	private final int code;
@@ -72,20 +66,14 @@ public class WeaponRegistry
 	}
 
 	public Weapon buildWeapon(){
-		if (this.code == 1){
-			return new PiercingCannon(damage);
-		}
-		else if (this.code == 2){
-			return new SniperCannon(damage);
-		}
-		else if (this.code == 3){
-			return new VolleySpreadCannon(damage,minRange,maxRange);
-		}
-		else{
-			return new WallTrap(damage);
-		}
+        return switch (this.code) {
+            case 1 -> new PiercingCannon(damage);
+            case 2 -> new SniperCannon(damage);
+            case 3 -> new VolleySpreadCannon(damage, minRange, maxRange);
+            case 4 -> new WallTrap(damage);
+            default -> null;
+        };
 	}
 
 
 }
-//

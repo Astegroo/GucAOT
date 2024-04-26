@@ -14,15 +14,12 @@ public class AbnormalTitan extends Titan
 
 
 	@Override
-	public int attack(Attackee target) { //abnormal titan attacks twice but that's given that the first hit didn't kill the target
-		int x = target.takeDamage(this.getDamage()); // attack once and store it in x
-		if(x==0){
-			return target.takeDamage(this.getDamage()); // if x is zero, target isn't dead yet so attack again
-		}
-		else{
-			return x; // else just return x
-		}
+	public int attack(Attackee target)
+	{
+		int resources = target.takeDamage(this.getDamage());
+		if(!target.isDefeated()) return target.takeDamage(this.getDamage());
+		else return resources;
+
 	}
 
 }
-//
