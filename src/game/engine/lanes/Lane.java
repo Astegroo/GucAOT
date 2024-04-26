@@ -1,7 +1,6 @@
 package game.engine.lanes;
 
 import java.util.ArrayList;
-import java.util.Comparator;
 import java.util.PriorityQueue;
 
 import game.engine.base.Wall;
@@ -65,54 +64,56 @@ public class Lane implements Comparable<Lane>
 
 	public void moveLaneTitans()
 	{
-		if (titans.isEmpty())
-			return;
+		if (titans.isEmpty())return;
 		PriorityQueue<Titan> temp = new PriorityQueue<>();
 		while(!this.titans.isEmpty())
 		{
-			Titan x = this.titans.remove();
-			x.move();
-			temp.add(x);
+			Titan titan = this.titans.poll();
+			titan.move();
+			temp.add(titan);
 		}
-		titans.addAll(temp);
+		while (!temp.isEmpty()) titans.add(temp.remove());
 	}
 
 	public int performLaneTitansAttacks()
 	{
 		if (titans.isEmpty() || this.isLaneLost()) return 0;
-		int resourceSum = 0;
+		int sum = 0;
 		PriorityQueue<Titan> temp = new PriorityQueue<>();
 		while(!this.titans.isEmpty())
 		{
-			Titan x = this.titans.poll();
-			if(x.hasReachedTarget()) resourceSum+=x.attack(this.laneWall);
-			temp.add(x);
+			Titan titan = this.titans.poll();
+			if(titan.hasReachedTarget()) sum+=titan.attack(this.laneWall);
+			temp.add(titan);
 		}
-		titans.addAll(temp);
-		return resourceSum;
+		while (!temp.isEmpty()) titans.add(temp.remove());
+		return sum;
 	}
+	
 	public int performLaneWeaponsAttacks()
 	{
 		int totalResources = 0;
-		for (Weapon weapon : weapons)
+		for (int i =0 ;i<weapons.size();i++)
 		{
-			totalResources += weapon.turnAttack(titans);
+			totalResources += weapons.get(i).turnAttack(titans);
 		}
 		return totalResources;
 	}
+	
 	public boolean isLaneLost() {return this.laneWall.isDefeated();}
+	
 	public void updateLaneDangerLevel()
 	{
-		int dangerSum=0;
+		int sum =0;
 		PriorityQueue<Titan> temp = new PriorityQueue<>();
 		while(!titans.isEmpty())
 		{
-			Titan x = titans.remove();
-			dangerSum+=x.getDangerLevel();
-			temp.add(x);
+			Titan titan = titans.remove();
+			sum +=titan.getDangerLevel();
+			temp.add(titan);
 		}
-		titans.addAll(temp);
-		this.dangerLevel=dangerSum;
+		while (!temp.isEmpty()) titans.add(temp.remove());
+		this.dangerLevel= sum;
 	}
 
 }

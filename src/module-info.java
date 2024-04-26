@@ -1,9 +1,3 @@
-/**
- * 
- */
-/**
- * 
- */
 module AttackOnTitans
 {
 	requires junit;

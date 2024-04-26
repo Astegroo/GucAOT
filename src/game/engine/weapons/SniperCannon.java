@@ -17,10 +17,10 @@ public class SniperCannon extends Weapon
 	public int turnAttack(PriorityQueue<Titan> laneTitans)
 	{
 		if (laneTitans.isEmpty()) return 0;
-		Titan x = laneTitans.remove();
-		int y = attack(x);
-		if(y == 0) laneTitans.add(x);
-		return y;
+		Titan titan = laneTitans.poll();
+		int sum = attack(titan);
+		if(!titan.isDefeated()) laneTitans.add(titan);
+		return sum;
 	}
 
 }

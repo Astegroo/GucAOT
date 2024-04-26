@@ -12,8 +12,10 @@ public class ColossalTitan extends Titan
 
 	@Override
 	public boolean move() {
-		this.setDistance(this.getDistance() - this.getSpeed());
-		this.setSpeed(this.getSpeed() + 1);
+		if (!this.hasReachedTarget()){
+			this.setDistance(this.getDistance() - this.getSpeed());
+			this.setSpeed(this.getSpeed() + 1);
+		}
 		return this.hasReachedTarget();
 	}
 }

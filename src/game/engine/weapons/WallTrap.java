@@ -18,12 +18,11 @@ public class WallTrap extends Weapon
 	public int turnAttack(PriorityQueue<Titan> laneTitans)
 	{
 		if (laneTitans.isEmpty()) return 0;
-		Titan x = laneTitans.remove();
-		int y = 0;
-		if(x.hasReachedTarget()) y = attack(x);
-		if (y==0) laneTitans.add(x);
-		return y;
+		Titan titan = laneTitans.poll();
+		int sum=0;
+		if(titan.hasReachedTarget()) sum = attack(titan);
+		if (!titan.isDefeated()) laneTitans.add(titan);
+		return sum;
 	}
 
 }
-//

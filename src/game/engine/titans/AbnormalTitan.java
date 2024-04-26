@@ -16,9 +16,9 @@ public class AbnormalTitan extends Titan
 	@Override
 	public int attack(Attackee target)
 	{
-		int x = target.takeDamage(this.getDamage());
-		if(x==0) return target.takeDamage(this.getDamage());
-		else return x;
+		int resources = target.takeDamage(this.getDamage());
+		if(!target.isDefeated()) return target.takeDamage(this.getDamage());
+		else return resources;
 
 	}
 

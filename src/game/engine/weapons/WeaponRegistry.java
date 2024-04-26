@@ -66,13 +66,13 @@ public class WeaponRegistry
 	}
 
 	public Weapon buildWeapon(){
-		switch (this.code){
-			case 1:return new PiercingCannon(damage);
-			case 2:return new SniperCannon(damage);
-			case 3:return new VolleySpreadCannon(damage,minRange,maxRange);
-			case 4:return new WallTrap(damage);
-			default:return null;
-		}
+        return switch (this.code) {
+            case 1 -> new PiercingCannon(damage);
+            case 2 -> new SniperCannon(damage);
+            case 3 -> new VolleySpreadCannon(damage, minRange, maxRange);
+            case 4 -> new WallTrap(damage);
+            default -> null;
+        };
 	}
 
 

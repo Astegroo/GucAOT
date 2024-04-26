@@ -139,17 +139,17 @@ public class Battle {
 
 	public void refillApproachingTitans() throws IOException {
 		int row;
-		if (battlePhase == BattlePhase.EARLY) {
-			row = 0;
-		} else if (battlePhase == BattlePhase.INTENSE) {
-			row = 1;
-		} else {
-			row = 2;
+		switch (this.battlePhase)
+		{
+			case EARLY : row = 0;break;
+			case INTENSE : row = 1;break;
+			default:row = 2;break;
 		}
-		HashMap<Integer, TitanRegistry> a = readTitanRegistry();
-		for (int i = 0; i < 7; i++) {
-			TitanRegistry TitanR = a.get(PHASES_APPROACHING_TITANS[row][i]);
-			approachingTitans.add(TitanR.spawnTitan(getTitanSpawnDistance()));
+		HashMap<Integer, TitanRegistry> registry = readTitanRegistry();
+		for (int i = 0; i < 7; i++)
+		{
+			TitanRegistry titanRegistry = registry.get(PHASES_APPROACHING_TITANS[row][i]);
+			approachingTitans.add(titanRegistry.spawnTitan(getTitanSpawnDistance()));
 		}
 	}
 
@@ -172,22 +172,10 @@ public class Battle {
 	{
 		for (int i = 0; i < numberOfTitansPerTurn; i++)
 		{
-			if (approachingTitans.isEmpty())
-			{
-				refillApproachingTitans();
-			}
-			Lane leastDangerousLane = null;
-			for (Lane lane : lanes)
-			{
-				if (leastDangerousLane == null || lane.getDangerLevel() < leastDangerousLane.getDangerLevel())
-				{
-					leastDangerousLane = lane;
-				}
-			}
-			if (leastDangerousLane != null)
-			{
-				leastDangerousLane.addTitan(approachingTitans.remove(0));
-			}
+			if (approachingTitans.isEmpty()) refillApproachingTitans();
+			Lane lessDanger = null;
+			for (Lane lane : lanes) if (lessDanger == null || lane.getDangerLevel() < lessDanger.getDangerLevel()) lessDanger = lane;
+			if (lessDanger != null) lessDanger.addTitan(approachingTitans.remove(0));
 		}
 	}
 
@@ -196,44 +184,45 @@ public class Battle {
 		PriorityQueue<Lane> temp = new PriorityQueue<>();
 		while (!lanes.isEmpty())
 		{
-			Lane L = lanes.remove();
-			if (!L.isLaneLost())
-			{
-				L.moveLaneTitans();
-			}
-			temp.add(L);
+			Lane lane = lanes.poll();
+			if (!lane.isLaneLost()) lane.moveLaneTitans();
+			temp.add(lane);
 		}
-		lanes.addAll(temp);
+		while (!temp.isEmpty())lanes.add(temp.poll());
 	}
 
 	private int performWeaponsAttacks()
 	{
-		int totalResources = 0;
-		for (Lane lane : lanes)
+		PriorityQueue<Lane> temp = new PriorityQueue<>();
+		int sum = 0;
+		for (int i = 0;i<lanes.size();i++)
 		{
-			totalResources += lane.performLaneWeaponsAttacks();
+			Lane lane = lanes.poll();
+			sum += lane.performLaneWeaponsAttacks();
+			temp.add(lane);
 		}
-		this.score += totalResources;
-		this.resourcesGathered += totalResources;
-		return totalResources;
+		while (!temp.isEmpty())lanes.add(temp.poll());
+		this.score += sum;
+		this.resourcesGathered += sum;
+		return sum;
 	}
 
 	private int performTitansAttacks()
 	{
 		PriorityQueue<Lane> temp = new PriorityQueue<>();
-		int resourceSum = 0;
+		int sum = 0;
 		while (!lanes.isEmpty())
 		{
-			Lane L = lanes.poll();
-			if (!L.isLaneLost())
+			Lane lane = lanes.poll();
+			if (!lane.isLaneLost())
 			{
-				int a = L.performLaneTitansAttacks();
-				resourceSum += a;
-				if (!L.isLaneLost()) temp.add(L);
+				int a = lane.performLaneTitansAttacks();
+				sum += a;
+				if (!lane.isLaneLost()) temp.add(lane);
 			}
 		}
-		lanes.addAll(temp);
-		return resourceSum;
+		while (!temp.isEmpty())lanes.add(temp.poll());
+		return sum;
 	}
 
 	private void updateLanesDangerLevels()
@@ -241,14 +230,11 @@ public class Battle {
 		PriorityQueue<Lane> temp = new PriorityQueue<>();
 		while (!lanes.isEmpty())
 		{
-			Lane L = lanes.remove();
-			if (!L.isLaneLost())
-			{
-				L.updateLaneDangerLevel();
-			}
-			temp.add(L);
+			Lane lane = lanes.poll();
+			if (!lane.isLaneLost()) lane.updateLaneDangerLevel();
+			temp.add(lane);
 		}
-		lanes.addAll(temp);
+		while (!temp.isEmpty())lanes.add(temp.poll());
 	}
 
 	private void performTurn() throws IOException {
@@ -274,11 +260,11 @@ public class Battle {
 		PriorityQueue<Lane> temp = new PriorityQueue<>();
 		while (!lanes.isEmpty())
 		{
-			Lane L = lanes.remove();
-			temp.add(L);
-			if (!L.isLaneLost()) return false;
+			Lane lane = lanes.remove();
+			temp.add(lane);
+			if (!lane.isLaneLost()) return false;
 		}
-		lanes.addAll(temp);
+		while (!temp.isEmpty())lanes.add(temp.poll());
 		return true;
 	}
 }
