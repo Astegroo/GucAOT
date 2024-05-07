@@ -4,7 +4,6 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.PriorityQueue;
-import java.util.Scanner;
 
 import game.engine.base.Wall;
 import game.engine.dataloader.DataLoader;
