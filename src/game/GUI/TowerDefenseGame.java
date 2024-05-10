@@ -1,6 +1,7 @@
-package game.engine;
+package game.GUI;
 
 import javafx.application.Application;
+import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Group;
 import javafx.scene.Parent;
@@ -16,21 +17,21 @@ import java.io.IOException;
 
 public class TowerDefenseGame extends Application {
 
-    private static final int WIDTH = 800;
-    private static final int HEIGHT = 600;
-    private static final int NUM_LANES = 3; // Number of lanes in the game area
-    private static final int LANE_HEIGHT = HEIGHT / NUM_LANES;
+    @FXML
 
     @Override
     public void start(Stage primaryStage) throws IOException {
         primaryStage.setTitle("Tower Defense Game");
-        primaryStage.setFullScreen(true);
-        Group root = new Group();
-        Scene scene = new Scene(root);
+
+        Parent root = FXMLLoader.load(getClass().getResource("sample.fxml"));
+
+        Scene Scene = new Scene(root);
+        primaryStage.setScene(Scene);
+        Scene.getStylesheets().add(getClass().getResource("style.css").toExternalForm());
+
+
+
         primaryStage.show();
-        Parent r = FXMLLoader.load(getClass().getResource("sample.fxml"));
-        Scene Scene2 = new Scene(r);
-        primaryStage.setScene(Scene2);
     }
 
     public static void main(String[] args) {
