@@ -45,5 +45,9 @@ public class Controller {
         stage.show();
     }
 
+    public void StartEasyMode(ActionEvent event) throws IOException{
+    SwitchToEasy(event);
+
+    }
 
 }

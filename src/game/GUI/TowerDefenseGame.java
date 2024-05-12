@@ -1,5 +1,5 @@
 package game.GUI;
-
+import game.engine.Battle;
 import javafx.application.Application;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -20,8 +20,7 @@ public class TowerDefenseGame extends Application {
         Scene Scene = new Scene(root);
         primaryStage.setScene(Scene);
         Scene.getStylesheets().add(getClass().getResource("menustyle.css").toExternalForm());
-        primaryStage.show();
-    }
+        primaryStage.show();    }
 
     public static void main(String[] args) {
         launch(args);
