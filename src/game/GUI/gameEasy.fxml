@@ -6,12 +6,11 @@
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.RowConstraints?>
-<?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="game.GUI.EasyController">
    <children>
-      <GridPane gridLinesVisible="true" layoutX="55.2" prefHeight="400.0" prefWidth="402.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="55.0" AnchorPane.rightAnchor="143.0" AnchorPane.topAnchor="0.0">
+      <GridPane fx:id="LaneGridPane" gridLinesVisible="true" layoutX="55.2" layoutY="83.2" prefHeight="317.0" prefWidth="402.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="55.0" AnchorPane.rightAnchor="143.0" AnchorPane.topAnchor="83.0">
         <columnConstraints>
           <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
           <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
@@ -31,7 +30,6 @@
           <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
         </rowConstraints>
       </GridPane>
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#3b3e40" height="400.0" stroke="BLACK" strokeType="INSIDE" width="55.0" />
       <Button layoutX="481.0" layoutY="90.0" mnemonicParsing="false" prefHeight="34.0" prefWidth="102.0" text="Pass Turn">
          <font>
             <Font name="Constantia Bold" size="14.0" />
@@ -46,5 +44,28 @@
       <Button layoutX="466.0" layoutY="224.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="134.0" text="Piercing Cannon" />
       <Button layoutX="466.0" layoutY="270.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="134.0" text="Sniper Cannon" />
       <Button layoutX="466.0" layoutY="321.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="133.0" text="Volley Spread Cannon" />
+      <Label layoutX="55.0" layoutY="14.0" text="Score" />
+      <Label layoutX="165.0" layoutY="14.0" text="Turns" />
+      <Label layoutX="286.0" layoutY="14.0" text="Resources" />
+      <Label layoutX="402.0" layoutY="14.0" text="Phase" />
+      <GridPane fx:id="WallGridPane" gridLinesVisible="true" layoutY="83.0" prefHeight="317.0" prefWidth="54.0">
+        <columnConstraints>
+          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+        </columnConstraints>
+        <rowConstraints>
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+        </rowConstraints>
+         <children>
+            <Label text="Wall1" />
+            <Label text="Wall2" GridPane.rowIndex="1" />
+            <Label text="Wall3" GridPane.rowIndex="2" />
+         </children>
+      </GridPane>
+      <Label fx:id="score" layoutX="56.0" layoutY="50.0" text="Label" />
+      <Label fx:id="turns" layoutX="166.0" layoutY="50.0" text="Label" />
+      <Label fx:id="resources" layoutX="299.0" layoutY="50.0" text="Label" />
+      <Label fx:id="phase" layoutX="404.0" layoutY="50.0" text="Label" />
    </children>
 </AnchorPane>
