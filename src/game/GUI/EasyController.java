@@ -22,7 +22,10 @@ import javafx.scene.control.ToggleGroup;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.GridPane;
+import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
+import javafx.scene.text.Font;
+import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -121,24 +124,38 @@ public class EasyController {
         for(Titan t :l.getTitans()) {
 
             ImageView Image = new ImageView();
+            Text text = new Text(String.valueOf(t.getCurrentHealth()));
+            text.setFont(new Font(15));
+
+            StackPane stack = new StackPane();
+
             if(t instanceof PureTitan){
                 Image img = new Image(getClass().getResourceAsStream("pure.png"));
                 Image.setImage(img);
+                Image.setFitWidth(57);
+                Image.setFitHeight(t.getHeightInMeters()*2);
+                stack.getChildren().addAll(Image,text);
             }else if(t instanceof  AbnormalTitan){
                 Image img = new Image(getClass().getResourceAsStream("abnormal.jpg"));
                 Image.setImage(img);
+                Image.setFitWidth(57);
+                Image.setFitHeight(t.getHeightInMeters()*2);
+                stack.getChildren().addAll(Image,text);
             }else if(t instanceof ArmoredTitan){
                 Image img = new Image(getClass().getResourceAsStream("armored.png"));
                 Image.setImage(img);
+                Image.setFitWidth(57);
+                Image.setFitHeight(t.getHeightInMeters()*2);
+                stack.getChildren().addAll(Image,text);
 
             }else{
                 Image img = new Image(getClass().getResourceAsStream("colossal.png"));
                 Image.setImage(img);
-
+                Image.setFitWidth(57);
+                Image.setFitHeight(t.getHeightInMeters()*2);
+                stack.getChildren().addAll(Image,text);
             }
-            Image.setFitWidth(57);
-            Image.setFitHeight(150);
-            LaneGridPane.add(Image,t.getDistance(), i-1);
+            LaneGridPane.add(stack,t.getDistance(), i-1);
         }
 
     }

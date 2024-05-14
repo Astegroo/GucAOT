@@ -37,14 +37,14 @@
             <Font name="Constantia Bold" size="14.0" />
          </font>
       </Button>
-      <Button layoutX="736.0" layoutY="246.0" mnemonicParsing="false" onAction="#purchaseWallTrap" prefHeight="26.0" prefWidth="134.0" text="Wall Trap" />
-      <Label layoutX="754.0" layoutY="97.0" prefHeight="18.0" prefWidth="102.0" text="Weapon Shop">
+      <Button layoutX="736.0" layoutY="283.0" mnemonicParsing="false" onAction="#purchaseWallTrap" prefHeight="26.0" prefWidth="134.0" text="Wall Trap" />
+      <Label layoutX="747.0" layoutY="22.0" prefHeight="18.0" prefWidth="102.0" text="Weapon Shop">
          <font>
             <Font name="System Bold Italic" size="14.0" />
          </font>
       </Label>
-      <Button layoutX="737.0" layoutY="136.0" mnemonicParsing="false" onAction="#purchasePiercingCannon" prefHeight="26.0" prefWidth="134.0" text="Piercing Cannon" />
-      <Button layoutX="737.0" layoutY="168.0" mnemonicParsing="false" onAction="#purchaseSniperCannon" prefHeight="26.0" prefWidth="134.0" text="Sniper Cannon" />
+      <Button layoutX="737.0" layoutY="54.0" mnemonicParsing="false" onAction="#purchasePiercingCannon" prefHeight="26.0" prefWidth="134.0" text="Piercing Cannon" />
+      <Button layoutX="737.0" layoutY="127.0" mnemonicParsing="false" onAction="#purchaseSniperCannon" prefHeight="26.0" prefWidth="134.0" text="Sniper Cannon" />
       <Button layoutX="737.0" layoutY="205.0" mnemonicParsing="false" onAction="#purchaseVolleySpreadCannon" prefHeight="26.0" prefWidth="133.0" text="Volley Spread Cannon" />
       <Label layoutX="55.0" layoutY="14.0" text="Score" />
       <Label layoutX="165.0" layoutY="14.0" text="Turns" />
@@ -60,11 +60,35 @@
       <Label fx:id="DangerLevelWall2" layoutX="13.0" layoutY="308.0" text="Danger Level:" />
       <Label fx:id="HealthWall3" layoutX="20.0" layoutY="424.0" text="Health:" />
       <Label fx:id="DangerLevelWall3" layoutX="20.0" layoutY="472.0" text="Danger Level:" />
-      <RadioButton fx:id="RadioLane1" layoutX="755.0" layoutY="334.0" mnemonicParsing="false" text="Lane 1" />
-      <RadioButton fx:id="RadioLane2" layoutX="755.0" layoutY="372.0" mnemonicParsing="false" text="Lane 2" />
-      <RadioButton fx:id="RadioLane3" layoutX="755.0" layoutY="407.0" mnemonicParsing="false" text="Lane 3" />
+      <RadioButton fx:id="RadioLane1" layoutX="770.0" layoutY="396.0" mnemonicParsing="false" text="Lane 1" />
+      <RadioButton fx:id="RadioLane2" layoutX="769.0" layoutY="424.0" mnemonicParsing="false" text="Lane 2" />
+      <RadioButton fx:id="RadioLane3" layoutX="769.0" layoutY="451.0" mnemonicParsing="false" text="Lane 3" />
       <VBox fx:id="VBoxLane1" layoutX="99.0" layoutY="73.0" prefHeight="152.0" prefWidth="58.0" />
       <VBox fx:id="VBoxLane2" layoutX="99.0" layoutY="232.0" prefHeight="152.0" prefWidth="58.0" />
       <VBox fx:id="VBoxLane3" layoutX="99.0" layoutY="384.0" prefHeight="152.0" prefWidth="58.0" />
+      <Label layoutX="737.0" layoutY="90.0" prefHeight="18.0" prefWidth="192.0" text="Type: Anti Titan Shell , Price: 25">
+         <font>
+            <Font size="10.0" />
+         </font>
+      </Label>
+      <Label layoutX="738.0" layoutY="160.0" prefHeight="15.0" prefWidth="158.0" text="Type: Long Range Spear , Price: 25">
+         <font>
+            <Font size="9.0" />
+         </font>
+      </Label>
+      <Label layoutX="738.0" layoutY="240.0" prefHeight="14.0" prefWidth="142.0" text="Type: Wall Spread Cannon, Price: 100">
+         <font>
+            <Font size="8.0" />
+         </font>
+      </Label>
+      <Label layoutX="737.0" layoutY="318.0" text="Type: Proximity Trap, Price: 75">
+         <font>
+            <Font size="10.0" />
+         </font>
+      </Label>
+      <Label layoutX="766.0" layoutY="109.0" text="Damage: 10" />
+      <Label layoutX="774.0" layoutY="187.0" text="Damage:35" />
+      <Label layoutX="775.0" layoutY="256.0" text="Damage: 5" />
+      <Label layoutX="763.0" layoutY="342.0" text="Damage: 100" />
    </children>
 </AnchorPane>
