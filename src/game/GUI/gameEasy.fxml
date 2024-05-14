@@ -30,7 +30,7 @@
           <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
         </rowConstraints>
       </GridPane>
-      <Button layoutX="481.0" layoutY="90.0" mnemonicParsing="false" prefHeight="34.0" prefWidth="102.0" text="Pass Turn">
+      <Button fx:id="passTurnButton" layoutX="481.0" layoutY="90.0" mnemonicParsing="false" onAction="#Turn" prefHeight="34.0" prefWidth="102.0" text="Pass Turn">
          <font>
             <Font name="Constantia Bold" size="14.0" />
          </font>
@@ -65,7 +65,7 @@
       </GridPane>
       <Label fx:id="score" layoutX="56.0" layoutY="50.0" text="Label" />
       <Label fx:id="turns" layoutX="166.0" layoutY="50.0" text="Label" />
-      <Label fx:id="resources" layoutX="299.0" layoutY="50.0" text="Label" />
+      <Label fx:id="resourcesLabel" layoutX="299.0" layoutY="50.0" text="Label" />
       <Label fx:id="phase" layoutX="404.0" layoutY="50.0" text="Label" />
    </children>
 </AnchorPane>

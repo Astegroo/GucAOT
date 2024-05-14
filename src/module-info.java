@@ -7,4 +7,6 @@ module AttackOnTitans
 	exports game.engine;
 	exports game.GUI;
 
+	opens game.GUI to javafx.fxml;
+
 }

@@ -256,14 +256,6 @@ public class Battle {
 
 	public boolean isGameOver()
 	{
-		PriorityQueue<Lane> temp = new PriorityQueue<>();
-		while (!lanes.isEmpty())
-		{
-			Lane lane = lanes.remove();
-			temp.add(lane);
-			if (!lane.isLaneLost()) return false;
-		}
-		while (!temp.isEmpty())lanes.add(temp.poll());
-		return true;
+		return lanes.isEmpty();
 	}
 }
