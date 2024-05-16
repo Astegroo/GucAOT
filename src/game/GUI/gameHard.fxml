@@ -34,20 +34,20 @@
             <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
             </rowConstraints>
         </GridPane>
-        <Button fx:id="passTurnButton" layoutX="753.0" layoutY="488.0" mnemonicParsing="false" prefHeight="34.0" prefWidth="102.0" text="Pass Turn">
+        <Button fx:id="passTurnButton" layoutX="753.0" layoutY="488.0" mnemonicParsing="false" onAction="#Turn" prefHeight="34.0" prefWidth="102.0" text="Pass Turn">
             <font>
                 <Font name="Constantia Bold" size="14.0" />
             </font>
         </Button>
-        <Button layoutX="736.0" layoutY="283.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="134.0" text="Wall Trap" />
+        <Button layoutX="736.0" layoutY="283.0" mnemonicParsing="false" onAction="#purchaseWallTrap" prefHeight="26.0" prefWidth="134.0" text="Wall Trap" />
         <Label layoutX="747.0" layoutY="22.0" prefHeight="18.0" prefWidth="102.0" text="Weapon Shop">
             <font>
                 <Font name="System Bold Italic" size="14.0" />
             </font>
         </Label>
-        <Button layoutX="737.0" layoutY="54.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="134.0" text="Piercing Cannon" />
-        <Button layoutX="737.0" layoutY="127.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="134.0" text="Sniper Cannon" />
-        <Button layoutX="737.0" layoutY="205.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="133.0" text="Volley Spread Cannon" />
+        <Button layoutX="737.0" layoutY="54.0" mnemonicParsing="false" onAction="#purchasePiercingCannon" prefHeight="26.0" prefWidth="134.0" text="Piercing Cannon" />
+        <Button layoutX="737.0" layoutY="127.0" mnemonicParsing="false" onAction="#purchaseSniperCannon" prefHeight="26.0" prefWidth="134.0" text="Sniper Cannon" />
+        <Button layoutX="737.0" layoutY="205.0" mnemonicParsing="false" onAction="#purchaseVolleySpreadCannon" prefHeight="26.0" prefWidth="133.0" text="Volley Spread Cannon" />
         <Label layoutX="55.0" layoutY="14.0" text="Score" />
         <Label layoutX="165.0" layoutY="14.0" text="Turns" />
         <Label layoutX="286.0" layoutY="14.0" text="Resources" />
@@ -57,12 +57,12 @@
         <Label fx:id="resourcesLabel" layoutX="299.0" layoutY="50.0" text="Label" />
         <Label fx:id="phase" layoutX="404.0" layoutY="50.0" text="Label" />
         <Label fx:id="HealthWall1" layoutX="20.0" layoutY="81.0" text="Health:" />
-        <Label fx:id="DangerLevelWall1" layoutX="14.0" layoutY="100.0" prefHeight="18.0" prefWidth="72.0" text="Danger Level:">
+        <Label fx:id="DangerLevelWall1" layoutX="9.0" layoutY="100.0" prefHeight="18.0" prefWidth="72.0" text="Danger Level:">
             <font>
                 <Font size="10.0" />
             </font></Label>
         <Label fx:id="HealthWall3" layoutX="20.0" layoutY="274.0" text="Health:" />
-        <Label fx:id="DangerLevelWall3" layoutX="20.0" layoutY="302.0" text="Danger Level:">
+        <Label fx:id="DangerLevelWall3" layoutX="9.0" layoutY="301.0" text="Danger Level:">
             <font>
                 <Font size="10.0" />
             </font></Label>
@@ -106,13 +106,13 @@
       <RadioButton fx:id="RadioLane4" layoutX="769.0" layoutY="424.0" mnemonicParsing="false" text="Lane 4" />
       <RadioButton fx:id="RadioLane5" layoutX="769.0" layoutY="442.0" mnemonicParsing="false" text="Lane 5" />
       <Label fx:id="HealthWall2" layoutX="20.0" layoutY="178.0" text="Health:" />
-      <Label fx:id="DangerLevelWall2" layoutX="14.0" layoutY="209.0" prefHeight="18.0" prefWidth="72.0" text="Danger Level:">
+      <Label fx:id="DangerLevelWall2" layoutX="9.0" layoutY="209.0" prefHeight="18.0" prefWidth="72.0" text="Danger Level:">
          <font>
             <Font size="10.0" />
          </font>
       </Label>
       <Label fx:id="HealthWall5" layoutX="20.0" layoutY="460.0" text="Health:" />
-      <Label fx:id="DangerLevelWall5" layoutX="20.0" layoutY="490.0" text="Danger Level:">
+      <Label fx:id="DangerLevelWall5" layoutX="9.0" layoutY="490.0" text="Danger Level:">
          <font>
             <Font size="10.0" />
          </font>

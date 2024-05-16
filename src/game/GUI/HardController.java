@@ -102,6 +102,8 @@ public class HardController {
         updateLanes(1);
         updateLanes(2);
         updateLanes(3);
+        updateLanes(4);
+        updateLanes(5);
         //Update Walls
         HealthWall1.setText("Health: " + String.valueOf(battle.getOriginalLanes().get(0).getLaneWall().getCurrentHealth()));
         HealthWall2.setText("Health: " + String.valueOf(battle.getOriginalLanes().get(1).getLaneWall().getCurrentHealth()));
@@ -112,6 +114,8 @@ public class HardController {
         DangerLevelWall1.setText("Danger Level: " + String.valueOf(battle.getOriginalLanes().get(0).getDangerLevel()));
         DangerLevelWall2.setText("Danger Level: " + String.valueOf(battle.getOriginalLanes().get(1).getDangerLevel()));
         DangerLevelWall3.setText("Danger Level: " + String.valueOf(battle.getOriginalLanes().get(2).getDangerLevel()));
+        DangerLevelWall4.setText("Danger Level: " + String.valueOf(battle.getOriginalLanes().get(3).getDangerLevel()));
+        DangerLevelWall5.setText("Danger Level: " + String.valueOf(battle.getOriginalLanes().get(4).getDangerLevel()));
         if(battle.getOriginalLanes().get(0).getLaneWall().getCurrentHealth() <= 0){
             HealthWall1.setText("Lane Lost");
         }
@@ -120,6 +124,12 @@ public class HardController {
         }
         if(battle.getOriginalLanes().get(2).getLaneWall().getCurrentHealth() <= 0){
             HealthWall3.setText("Lane Lost");
+        }
+        if(battle.getOriginalLanes().get(3).getLaneWall().getCurrentHealth() <= 0){
+            HealthWall4.setText("Lane Lost");
+        }
+        if(battle.getOriginalLanes().get(4).getLaneWall().getCurrentHealth() <= 0){
+            HealthWall5.setText("Lane Lost");
         }
 
     }
@@ -225,6 +235,37 @@ public class HardController {
                 errorMessage("Not enough Resources or Invalid Lane!");
             }
         }
+        if(RadioLane4.isSelected()){
+            try {
+                battle.purchaseWeapon(weaponCode,battle.getOriginalLanes().get(3));
+                ImageView imgView = new ImageView();
+                Image img = new Image(getClass().getResourceAsStream(getImageForWeapon(weaponCode)));
+                imgView.setImage(img);
+                imgView.setFitHeight(50);
+                imgView.setFitWidth(50);
+                VBoxLane4.getChildren().add(imgView);
+                Turn();
+
+            } catch (InsufficientResourcesException | InvalidLaneException | IOException e) {
+                errorMessage("Not enough Resources or Invalid Lane!");
+            }
+        }
+        if(RadioLane5.isSelected()){
+            try {
+                battle.purchaseWeapon(weaponCode,battle.getOriginalLanes().get(4));
+                ImageView imgView = new ImageView();
+                Image img = new Image(getClass().getResourceAsStream(getImageForWeapon(weaponCode)));
+                imgView.setImage(img);
+                imgView.setFitHeight(50);
+                imgView.setFitWidth(50);
+                VBoxLane5.getChildren().add(imgView);
+                Turn();
+
+            } catch (InsufficientResourcesException | InvalidLaneException | IOException e) {
+                errorMessage("Not enough Resources or Invalid Lane!");
+            }
+        }
+
     }
 
     public String getImageForWeapon(int weaponCode){
