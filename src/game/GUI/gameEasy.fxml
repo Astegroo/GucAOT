@@ -55,11 +55,20 @@
       <Label fx:id="resourcesLabel" layoutX="299.0" layoutY="50.0" text="Label" />
       <Label fx:id="phase" layoutX="404.0" layoutY="50.0" text="Label" />
       <Label fx:id="HealthWall1" layoutX="20.0" layoutY="109.0" text="Health:" />
-      <Label fx:id="DangerLevelWall1" layoutX="13.0" layoutY="150.0" prefHeight="18.0" prefWidth="72.0" text="Danger Level:" />
+      <Label fx:id="DangerLevelWall1" layoutX="7.0" layoutY="151.0" prefHeight="18.0" prefWidth="72.0" text="Danger Level:">
+         <font>
+            <Font size="10.0" />
+         </font></Label>
       <Label fx:id="HealthWall2" layoutX="20.0" layoutY="265.0" text="Health:" />
-      <Label fx:id="DangerLevelWall2" layoutX="13.0" layoutY="308.0" text="Danger Level:" />
+      <Label fx:id="DangerLevelWall2" layoutX="9.0" layoutY="310.0" text="Danger Level:">
+         <font>
+            <Font size="10.0" />
+         </font></Label>
       <Label fx:id="HealthWall3" layoutX="20.0" layoutY="424.0" text="Health:" />
-      <Label fx:id="DangerLevelWall3" layoutX="20.0" layoutY="472.0" text="Danger Level:" />
+      <Label fx:id="DangerLevelWall3" layoutX="13.0" layoutY="473.0" text="Danger Level:">
+         <font>
+            <Font size="10.0" />
+         </font></Label>
       <RadioButton fx:id="RadioLane1" layoutX="770.0" layoutY="396.0" mnemonicParsing="false" text="Lane 1" />
       <RadioButton fx:id="RadioLane2" layoutX="769.0" layoutY="424.0" mnemonicParsing="false" text="Lane 2" />
       <RadioButton fx:id="RadioLane3" layoutX="769.0" layoutY="451.0" mnemonicParsing="false" text="Lane 3" />

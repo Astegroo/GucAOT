@@ -15,10 +15,7 @@ import javafx.geometry.Pos;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Alert;
-import javafx.scene.control.Label;
-import javafx.scene.control.RadioButton;
-import javafx.scene.control.ToggleGroup;
+import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.GridPane;
@@ -52,11 +49,6 @@ public class EasyController {
     public Label resourcesLabel;
     @FXML
     private Label phase;
-    @FXML
-    public Stage stage;
-    public Scene scene;
-    @FXML
-    private GridPane WallGridPane;
     @FXML
     private GridPane LaneGridPane;
     public Battle battle;
@@ -128,6 +120,14 @@ public class EasyController {
             text.setFont(new Font(15));
 
             StackPane stack = new StackPane();
+
+            Image.setOnMouseEntered(event ->{
+                ProgressBar pb = new ProgressBar();
+            });
+
+            Image.setOnMouseExited(mouseEvent -> {
+
+            });
 
             if(t instanceof PureTitan){
                 Image img = new Image(getClass().getResourceAsStream("pure.png"));
