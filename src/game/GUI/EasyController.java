@@ -45,6 +45,11 @@ public class EasyController {
     private Label score;
     @FXML
     private Label turns;
+
+    @FXML
+    public Stage stage;
+    @FXML
+    public Scene scene;
     @FXML
     public Label resourcesLabel;
     @FXML
@@ -79,7 +84,8 @@ public class EasyController {
         }
         //Check for end
         if(battle.isGameOver()){
-            errorMessage("Game Over! Your Score is " + battle.getScore());
+            errorMessage("Game Over! You have lost! Your Score is " + battle.getScore());
+            BackToMenu();
         }
         //Change stats
         resourcesLabel.setText((String.valueOf(battle.getResourcesGathered())));
@@ -250,6 +256,20 @@ public class EasyController {
         error.setContentText(msg);
         error.showAndWait();
 
+    }
+
+    public void BackToMenu(){
+        Parent root = null;
+        try {
+            root = FXMLLoader.load(getClass().getResource("menu.fxml"));
+        } catch (IOException e) {
+            errorMessage("Something wrong has happened!");
+        }
+        stage = (Stage) score.getScene().getWindow();
+        scene = new Scene(root);
+        scene.getStylesheets().add(getClass().getResource("menustyle.css").toExternalForm());
+        stage.setScene(scene);
+        stage.show();
     }
 
 }
