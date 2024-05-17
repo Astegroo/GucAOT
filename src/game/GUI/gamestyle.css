@@ -1,4 +1,4 @@
 .root{
     -fx-background-image: url("grass.jpg");
-    -fx-background-size: contain;
+    -fx-background-size: cover;
 }

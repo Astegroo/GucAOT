@@ -138,6 +138,9 @@ public class HardController {
         Lane l = battle.getOriginalLanes().get(i-1);
 
         for(Titan t :l.getTitans()) {
+            if(t.isDefeated()){
+                l.getTitans().remove(t);
+            }
 
             ImageView Image = new ImageView();
             Text text = new Text(String.valueOf(t.getCurrentHealth()));
